@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let tabBarController = UITabBarController()
+        let mapViewController = MapViewController()
+        let friendsViewController = FriendsViewController()
+        tabBarController.viewControllers = [mapViewController, friendsViewController]
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window!.rootViewController = tabBarController
+        window!.makeKeyAndVisible()
+        window!.backgroundColor = UIColor.whiteColor()
+        
         return true
     }
 

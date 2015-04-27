@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */; };
-		E926ACE81AEE334F00BBC1D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACE71AEE334F00BBC1D1 /* ViewController.swift */; };
-		E926ACEB1AEE334F00BBC1D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E926ACE91AEE334F00BBC1D1 /* Main.storyboard */; };
 		E926ACED1AEE334F00BBC1D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E926ACEC1AEE334F00BBC1D1 /* Images.xcassets */; };
 		E926ACF01AEE334F00BBC1D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E926ACEE1AEE334F00BBC1D1 /* LaunchScreen.xib */; };
 		E926ACFC1AEE334F00BBC1D1 /* StalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACFB1AEE334F00BBC1D1 /* StalkerTests.swift */; };
+		E926AD061AEE34E000BBC1D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD051AEE34E000BBC1D1 /* TabBarController.swift */; };
+		E926AD081AEE353900BBC1D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD071AEE353900BBC1D1 /* MapViewController.swift */; };
+		E926AD0A1AEE36B600BBC1D1 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +30,14 @@
 		E926ACE01AEE334F00BBC1D1 /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E926ACE41AEE334F00BBC1D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E926ACE71AEE334F00BBC1D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E926ACEA1AEE334F00BBC1D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E926ACEC1AEE334F00BBC1D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E926ACEF1AEE334F00BBC1D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E926ACF51AEE334F00BBC1D1 /* StalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E926ACFA1AEE334F00BBC1D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E926ACFB1AEE334F00BBC1D1 /* StalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StalkerTests.swift; sourceTree = "<group>"; };
+		E926AD051AEE34E000BBC1D1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E926AD071AEE353900BBC1D1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */,
-				E926ACE71AEE334F00BBC1D1 /* ViewController.swift */,
-				E926ACE91AEE334F00BBC1D1 /* Main.storyboard */,
+				E926AD051AEE34E000BBC1D1 /* TabBarController.swift */,
+				E926AD071AEE353900BBC1D1 /* MapViewController.swift */,
+				E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */,
 				E926ACEC1AEE334F00BBC1D1 /* Images.xcassets */,
 				E926ACEE1AEE334F00BBC1D1 /* LaunchScreen.xib */,
 				E926ACE31AEE334F00BBC1D1 /* Supporting Files */,
@@ -192,7 +195,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E926ACEB1AEE334F00BBC1D1 /* Main.storyboard in Resources */,
 				E926ACF01AEE334F00BBC1D1 /* LaunchScreen.xib in Resources */,
 				E926ACED1AEE334F00BBC1D1 /* Images.xcassets in Resources */,
 			);
@@ -212,8 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E926ACE81AEE334F00BBC1D1 /* ViewController.swift in Sources */,
+				E926AD0A1AEE36B600BBC1D1 /* FriendsViewController.swift in Sources */,
 				E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */,
+				E926AD081AEE353900BBC1D1 /* MapViewController.swift in Sources */,
+				E926AD061AEE34E000BBC1D1 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +240,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E926ACE91AEE334F00BBC1D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E926ACEA1AEE334F00BBC1D1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E926ACEE1AEE334F00BBC1D1 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -409,6 +405,7 @@
 				E926AD011AEE334F00BBC1D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E926AD021AEE334F00BBC1D1 /* Build configuration list for PBXNativeTarget "StalkerTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +414,7 @@
 				E926AD041AEE334F00BBC1D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
