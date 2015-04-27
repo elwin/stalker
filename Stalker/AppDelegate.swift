@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let mapViewController = MapViewController()
         let friendsViewController = FriendsViewController()
+        mapViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Search, tag: 0)
+        friendsViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 1)
         tabBarController.viewControllers = [mapViewController, friendsViewController]
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
