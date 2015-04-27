@@ -31,6 +31,7 @@
 		E930F3F31AEE4DCA008EABD6 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3ED1AEE4DCA008EABD6 /* ParseFacebookUtils.framework */; };
 		E930F3F41AEE4DCA008EABD6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3EE1AEE4DCA008EABD6 /* ParseFacebookUtilsV4.framework */; };
 		E930F3F51AEE4DCA008EABD6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3EF1AEE4DCA008EABD6 /* ParseUI.framework */; };
+		E930F3F91AEE5A46008EABD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		E930F3ED1AEE4DCA008EABD6 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		E930F3EE1AEE4DCA008EABD6 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		E930F3EF1AEE4DCA008EABD6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */,
+				E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */,
 				E926AD051AEE34E000BBC1D1 /* TabBarController.swift */,
 				E926AD071AEE353900BBC1D1 /* MapViewController.swift */,
 				E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */,
@@ -302,6 +305,7 @@
 				E926AD0A1AEE36B600BBC1D1 /* FriendsViewController.swift in Sources */,
 				E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */,
 				E926AD081AEE353900BBC1D1 /* MapViewController.swift in Sources */,
+				E930F3F91AEE5A46008EABD6 /* LoginViewController.swift in Sources */,
 				E926AD061AEE34E000BBC1D1 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

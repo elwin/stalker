@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -28,6 +29,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func checkLocationAuthorizationStatus(mapView: MKMapView) {
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
             locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let currentUser = PFUser.currentUser()
+        if (currentUser != nil) {
+            println(currentUser?.username)
+        } else {
+            let loginViewController = LoginViewController()
+            self.presentViewController(loginViewController, animated: true, completion: nil)
         }
     }
     
