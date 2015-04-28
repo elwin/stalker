@@ -13,14 +13,17 @@ class FriendsViewController: UITableViewController {
     
     override func viewDidLoad() {
         title = "Stalker"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: nil, action: "logout")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "logout")
+        
     }
     
     func logout() {
         PFUser.logOut()
         self.tabBarController?.selectedIndex = 0
         let tabBarController = TabBarController()
-        tabBarController.viewDidLoad()
+        
+        let loginViewController = LoginViewController()
+        self.presentViewController(loginViewController, animated: true, completion: nil)
     }
     
 }
