@@ -15,7 +15,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.clearColor()
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.frame = view.frame
+        view.addSubview(blurView)
         
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 0
@@ -66,24 +71,37 @@ class LoginViewController: UIViewController {
             (success, error) -> Void in
             if (error == nil) {
                 println("Signed in User: \(username)")
+                self.finishLogin()
             } else {
-                let newUser = PFUser.new()
-                newUser.username = username
-                newUser.password = password
-                newUser.signUpInBackgroundWithBlock({
-                    (success, error) -> Void in
-                    println("Signed up User: \(password)")
-                })
+                self.signup()
             }
             
         }
     }
     
+    func signup() {
+        let username = usernameField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let password = "stalker"
+        
+        let newUser = PFUser.new()
+        newUser.username = username
+        newUser.password = password
+        
+        newUser.signUpInBackgroundWithBlock { (success, error) -> Void in
+            if (error == nil) {
+                println("Signed up User: \(username)")
+                self.finishLogin()
+            } else {
+                UIAlertView(title: "Oops!", message: "Some Error occured. Please try again later!", delegate: nil, cancelButtonTitle: "Okay").show()
+            }
+        }
+    }
     
-    
-    
-    
-    
-    
-    
+    func finishLogin() {
+        self.usernameField.resignFirstResponder()
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            let mapViewController = MapViewController()
+            mapViewController.checkLocationAuthorizationStatus()
+        })
+    }
 }

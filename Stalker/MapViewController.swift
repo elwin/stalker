@@ -17,35 +17,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
         
         map = MKMapView(frame: view.frame)
         view.addSubview(map)
         
+        
     }
     
-    func checkLocationAuthorizationStatus(mapView: MKMapView) {
+    func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        let currentUser = PFUser.currentUser()
-        if (currentUser != nil) {
-            println(currentUser?.username)
-        } else {
-            let loginViewController = LoginViewController()
-            self.presentViewController(loginViewController, animated: true, completion: nil)
-        }
-    }
-    
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
-        case .NotDetermined:
-            locationManager.requestWhenInUseAuthorization()
         case .AuthorizedWhenInUse:
             map.showsUserLocation = true
         default:

@@ -21,12 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("LUVykUZI50P9A6muFnALaSxb9jsNpyRh8qzo89sV",
             clientKey: "OE3ew9T7oBbrH2jB0O8d9XdMybHwsfabzAE3sKTz")
         
-        let tabBarController = UITabBarController()
+        let tabBarController = TabBarController()
         let mapViewController = MapViewController()
         let friendsViewController = FriendsViewController()
+        let navigationController = NavigationController(rootViewController: friendsViewController)
+        
         mapViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Search, tag: 0)
         friendsViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 1)
-        tabBarController.viewControllers = [mapViewController, friendsViewController]
+        tabBarController.viewControllers = [mapViewController, navigationController]
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = tabBarController
