@@ -17,25 +17,66 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         
+        self.title = "Stalker"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refresh")
         
         map = MKMapView(frame: view.frame)
         view.addSubview(map)
         
-        
+        requestAuthorization()
     }
     
-    func checkLocationAuthorizationStatus() {
-        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        }
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        
+        locationManager.stopUpdatingLocation()
+        updateLocation(newLocation)
+
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        switch status {
-        case .AuthorizedWhenInUse:
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             map.showsUserLocation = true
-        default:
-            break
+        }
+    }
+    
+    func requestAuthorization() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func refresh() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    func updateLocation(location: CLLocation) {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let savedObjectID = userDefaults.valueForKey("objectID") as? String
+        
+        if let objectID = savedObjectID {
+            let query = PFQuery(className: "locations")
+            
+            query.getObjectInBackgroundWithId(objectID) {
+                (data: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    println(error)
+                } else if let data = data {
+                    data["user"] = PFUser.currentUser()?.username
+                    data["latitude"] = location.coordinate.latitude
+                    data["longitude"] = location.coordinate.longitude
+                    data.saveInBackground()
+                    println("Updated")
+                }
+            }
+        } else {
+            let data = PFObject(className: "locations")
+            data["user"] = PFUser.currentUser()?.username
+            data["latitude"] = location.coordinate.latitude
+            data["longitude"] = location.coordinate.longitude
+            data.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                userDefaults.setValue(data.objectId!, forKey: "objectID")
+            })
         }
     }
 }

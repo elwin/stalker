@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90361941AEFADF30092037F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90361931AEFADF30092037F /* MapKit.framework */; };
+		E90361981AEFB0980092037F /* Zurich, Switzerland.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E90361971AEFB0980092037F /* Zurich, Switzerland.gpx */; };
 		E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */; };
 		E926ACED1AEE334F00BBC1D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E926ACEC1AEE334F00BBC1D1 /* Images.xcassets */; };
 		E926ACF01AEE334F00BBC1D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E926ACEE1AEE334F00BBC1D1 /* LaunchScreen.xib */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90361931AEFADF30092037F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E90361971AEFB0980092037F /* Zurich, Switzerland.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Zurich, Switzerland.gpx"; sourceTree = "<group>"; };
 		E926ACE01AEE334F00BBC1D1 /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E926ACE41AEE334F00BBC1D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E90361941AEFADF30092037F /* MapKit.framework in Frameworks */,
 				E926AD351AEE451E00BBC1D1 /* UIKit.framework in Frameworks */,
 				E926AD2C1AEE448800BBC1D1 /* CoreGraphics.framework in Frameworks */,
 				E926AD2D1AEE448800BBC1D1 /* CoreLocation.framework in Frameworks */,
@@ -117,6 +122,7 @@
 		E926ACD71AEE334F00BBC1D1 = {
 			isa = PBXGroup;
 			children = (
+				E90361971AEFB0980092037F /* Zurich, Switzerland.gpx */,
 				E926AD0B1AEE427A00BBC1D1 /* ScratchPad.playground */,
 				E926ACE21AEE334F00BBC1D1 /* Stalker */,
 				E926AD0C1AEE430800BBC1D1 /* Frameworks */,
@@ -178,6 +184,7 @@
 		E926AD0C1AEE430800BBC1D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E90361931AEFADF30092037F /* MapKit.framework */,
 				E930F3EA1AEE4DCA008EABD6 /* Bolts.framework */,
 				E930F3EB1AEE4DCA008EABD6 /* Parse.framework */,
 				E930F3EC1AEE4DCA008EABD6 /* ParseCrashReporting.framework */,
@@ -286,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E90361981AEFB0980092037F /* Zurich, Switzerland.gpx in Resources */,
 				E926ACF01AEE334F00BBC1D1 /* LaunchScreen.xib in Resources */,
 				E926ACED1AEE334F00BBC1D1 /* Images.xcassets in Resources */,
 			);

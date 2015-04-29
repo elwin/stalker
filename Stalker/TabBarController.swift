@@ -20,7 +20,6 @@ class TabBarController: UITabBarController {
             let loginViewController = LoginViewController()
             self.presentViewController(loginViewController, animated: true, completion: nil)
         }
-        
     }
     
 }

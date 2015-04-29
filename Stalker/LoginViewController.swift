@@ -100,8 +100,7 @@ class LoginViewController: UIViewController {
     func finishLogin() {
         self.usernameField.resignFirstResponder()
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            let mapViewController = MapViewController()
-            mapViewController.checkLocationAuthorizationStatus()
+            MapViewController().viewDidAppear(true)
         })
     }
 }
