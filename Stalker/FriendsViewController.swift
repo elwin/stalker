@@ -19,6 +19,7 @@ class FriendsViewController: UITableViewController {
     
     func logout() {
         PFUser.logOut()
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("objectID")
         self.tabBarController?.selectedIndex = 0
         let tabBarController = TabBarController()
         

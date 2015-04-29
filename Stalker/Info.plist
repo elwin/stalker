@@ -25,7 +25,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to let other people stalk you more easily.</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Launcscreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

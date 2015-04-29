@@ -11,7 +11,6 @@
 		E90361981AEFB0980092037F /* Zurich, Switzerland.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E90361971AEFB0980092037F /* Zurich, Switzerland.gpx */; };
 		E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */; };
 		E926ACED1AEE334F00BBC1D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E926ACEC1AEE334F00BBC1D1 /* Images.xcassets */; };
-		E926ACF01AEE334F00BBC1D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E926ACEE1AEE334F00BBC1D1 /* LaunchScreen.xib */; };
 		E926ACFC1AEE334F00BBC1D1 /* StalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACFB1AEE334F00BBC1D1 /* StalkerTests.swift */; };
 		E926AD061AEE34E000BBC1D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD051AEE34E000BBC1D1 /* TabBarController.swift */; };
 		E926AD081AEE353900BBC1D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD071AEE353900BBC1D1 /* MapViewController.swift */; };
@@ -35,6 +34,7 @@
 		E930F3F41AEE4DCA008EABD6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3EE1AEE4DCA008EABD6 /* ParseFacebookUtilsV4.framework */; };
 		E930F3F51AEE4DCA008EABD6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3EF1AEE4DCA008EABD6 /* ParseUI.framework */; };
 		E930F3F91AEE5A46008EABD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */; };
+		E995C0F61AF1152E0076785E /* Launcscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E995C0F51AF1152E0076785E /* Launcscreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 		E926ACE41AEE334F00BBC1D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E926ACEC1AEE334F00BBC1D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E926ACEF1AEE334F00BBC1D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E926ACF51AEE334F00BBC1D1 /* StalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E926ACFA1AEE334F00BBC1D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E926ACFB1AEE334F00BBC1D1 /* StalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StalkerTests.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		E930F3EE1AEE4DCA008EABD6 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		E930F3EF1AEE4DCA008EABD6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E995C0F51AF1152E0076785E /* Launcscreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launcscreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +149,8 @@
 				E926AD071AEE353900BBC1D1 /* MapViewController.swift */,
 				E92D69AA1AEEB61800350169 /* NavigationController.swift */,
 				E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */,
+				E995C0F51AF1152E0076785E /* Launcscreen.storyboard */,
 				E926ACEC1AEE334F00BBC1D1 /* Images.xcassets */,
-				E926ACEE1AEE334F00BBC1D1 /* LaunchScreen.xib */,
 				E926ACE31AEE334F00BBC1D1 /* Supporting Files */,
 			);
 			path = Stalker;
@@ -294,8 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90361981AEFB0980092037F /* Zurich, Switzerland.gpx in Resources */,
-				E926ACF01AEE334F00BBC1D1 /* LaunchScreen.xib in Resources */,
 				E926ACED1AEE334F00BBC1D1 /* Images.xcassets in Resources */,
+				E995C0F61AF1152E0076785E /* Launcscreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,17 +339,6 @@
 			targetProxy = E926ACF61AEE334F00BBC1D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E926ACEE1AEE334F00BBC1D1 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E926ACEF1AEE334F00BBC1D1 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E926ACFD1AEE334F00BBC1D1 /* Debug */ = {

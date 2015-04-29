@@ -25,14 +25,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         requestAuthorization()
     }
-    
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        
-        locationManager.stopUpdatingLocation()
-        updateLocation(newLocation)
-
-    }
-    
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             map.showsUserLocation = true
@@ -46,10 +38,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func refresh() {
-        locationManager.startUpdatingLocation()
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            self.updateLocation(geoPoint!)
+        }
+        retrieveStalkerLocation()
     }
     
-    func updateLocation(location: CLLocation) {
+    func updateLocation(location: PFGeoPoint) {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let savedObjectID = userDefaults.valueForKey("objectID") as? String
@@ -63,20 +58,46 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     println(error)
                 } else if let data = data {
                     data["user"] = PFUser.currentUser()?.username
-                    data["latitude"] = location.coordinate.latitude
-                    data["longitude"] = location.coordinate.longitude
+                    data["location"] = location
                     data.saveInBackground()
-                    println("Updated")
                 }
             }
         } else {
             let data = PFObject(className: "locations")
             data["user"] = PFUser.currentUser()?.username
-            data["latitude"] = location.coordinate.latitude
-            data["longitude"] = location.coordinate.longitude
+            data["location"] = location
             data.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                 userDefaults.setValue(data.objectId!, forKey: "objectID")
             })
         }
+    }
+    
+    func retrieveStalkerLocation() {
+        let query = PFQuery(className: "locations")
+        let username = PFUser.currentUser()?.username
+        if let user = username {
+            query.whereKey("user", notEqualTo: user)
+            query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    if let objects = objects as? [PFObject] {
+                        for object in objects {
+                            let location = object["location"] as! PFGeoPoint
+                            let username = object["user"] as! String
+                            let time = object.createdAt!
+                            self.setStalkerLocation(location, username: username, timeStamp: time)
+                        }
+                    }
+                }
+            })
+        }
+        
+    }
+    
+    func setStalkerLocation(geoPoint: PFGeoPoint, username: String, timeStamp: NSDate) {
+        let location = CLLocation(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
+        println("\(location.coordinate.latitude) \(location.coordinate.longitude)")
+        println(username)
+        println(timeStamp)
+        
     }
 }
