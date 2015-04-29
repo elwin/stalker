@@ -10,10 +10,11 @@ import UIKit
 import MapKit
 import Parse
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var locationManager = CLLocationManager()
     var map: MKMapView! = nil
+    var userLocationSet = false
     
     override func viewDidLoad() {
         
@@ -21,7 +22,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refresh")
         
         map = MKMapView(frame: view.frame)
+        map.delegate = self
         view.addSubview(map)
+        
+        let mapSize = MKMapSize(width: 100, height: 100)
+        
         
         requestAuthorization()
     }
@@ -31,6 +36,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        
+        if userLocationSet {
+            return
+        }
+        
+        let locationDistance: CLLocationDistance = 10000
+        let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, locationDistance, locationDistance)
+        map.setRegion(region, animated: true)
+        userLocationSet = true
+        
+    }
+    
     func requestAuthorization() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -38,6 +56,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func refresh() {
+        
         PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
             self.updateLocation(geoPoint!)
         }
@@ -80,6 +99,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
                 if error == nil {
                     if let objects = objects as? [PFObject] {
+                        self.map.removeAnnotations(self.map.annotations)
                         for object in objects {
                             let location = object["location"] as! PFGeoPoint
                             let username = object["user"] as! String
@@ -94,10 +114,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setStalkerLocation(geoPoint: PFGeoPoint, username: String, timeStamp: NSDate) {
-        let location = CLLocation(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
-        println("\(location.coordinate.latitude) \(location.coordinate.longitude)")
-        println(username)
-        println(timeStamp)
+        let location = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
         
+        let annotation = StalkerAnnotation(stalker: username, coordinate: location) as MKAnnotation
+        map.addAnnotation(annotation)
     }
 }
