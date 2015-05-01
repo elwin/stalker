@@ -21,15 +21,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.title = "Stalker"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refresh")
         
-        map = MKMapView(frame: view.frame)
+        map = MKMapView()
         map.delegate = self
         view.addSubview(map)
         
-        let mapSize = MKMapSize(width: 100, height: 100)
-        
+        map.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[map]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["map": map]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[map]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["map": map]))
         
         requestAuthorization()
     }
+    
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             map.showsUserLocation = true
@@ -56,7 +58,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func refresh() {
-        
         PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
             self.updateLocation(geoPoint!)
         }
