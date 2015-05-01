@@ -35,6 +35,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             map.showsUserLocation = true
+            retrieveStalkerLocation()
         }
     }
     
@@ -48,6 +49,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, locationDistance, locationDistance)
         map.setRegion(region, animated: true)
         userLocationSet = true
+        retrieveStalkerLocation()
         
     }
     
@@ -58,9 +60,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func refresh() {
-        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-            self.updateLocation(geoPoint!)
-        }
+        
+        let location = PFGeoPoint(location: map.userLocation.location)
+        updateLocation(location)
+        
         retrieveStalkerLocation()
     }
     
