@@ -27,7 +27,7 @@ class FriendsViewController: UITableViewController, UITableViewDelegate {
     
     func refreshTableView() {
         
-        let query = PFQuery(className: "_User")
+        let query = PFQuery(className: kUserClass)
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.users = objects as? [PFUser]
@@ -37,9 +37,9 @@ class FriendsViewController: UITableViewController, UITableViewDelegate {
     }
     
     func logout() {
-        let object = PFObject(className: "location")
-        object.objectId = NSUserDefaults.standardUserDefaults().objectForKey("objectID") as? String
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("objectID")
+        let object = PFObject(className: kLocationClass)
+        object.objectId = NSUserDefaults.standardUserDefaults().objectForKey(kObjectID) as? String
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(kObjectID)
         object.deleteInBackground()
         PFUser.logOutInBackground()
         

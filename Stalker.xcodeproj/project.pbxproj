@@ -25,7 +25,6 @@
 		E926AD311AEE448800BBC1D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E926AD291AEE448800BBC1D1 /* Security.framework */; };
 		E926AD331AEE448800BBC1D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E926AD2B1AEE448800BBC1D1 /* SystemConfiguration.framework */; };
 		E926AD351AEE451E00BBC1D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E926AD341AEE451E00BBC1D1 /* UIKit.framework */; };
-		E92D69AB1AEEB61800350169 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D69AA1AEEB61800350169 /* NavigationController.swift */; };
 		E930F3F01AEE4DCA008EABD6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3EA1AEE4DCA008EABD6 /* Bolts.framework */; };
 		E930F3F11AEE4DCA008EABD6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3EB1AEE4DCA008EABD6 /* Parse.framework */; };
 		E930F3F21AEE4DCA008EABD6 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E930F3EC1AEE4DCA008EABD6 /* ParseCrashReporting.framework */; };
@@ -72,7 +71,6 @@
 		E926AD291AEE448800BBC1D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E926AD2B1AEE448800BBC1D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E926AD341AEE451E00BBC1D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		E92D69AA1AEEB61800350169 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		E930F3EA1AEE4DCA008EABD6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E930F3EB1AEE4DCA008EABD6 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E930F3EC1AEE4DCA008EABD6 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -150,9 +148,8 @@
 				E926AD051AEE34E000BBC1D1 /* TabBarController.swift */,
 				E926AD071AEE353900BBC1D1 /* MapViewController.swift */,
 				E9BA78501AF137BB004482EF /* StalkerAnnotation.swift */,
-				E92D69AA1AEEB61800350169 /* NavigationController.swift */,
-				E9E5102D1AFD016900692AA8 /* images.xcassets */,
 				E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */,
+				E9E5102D1AFD016900692AA8 /* images.xcassets */,
 				E995C0F51AF1152E0076785E /* Launcscreen.storyboard */,
 				E926ACE31AEE334F00BBC1D1 /* Supporting Files */,
 			);
@@ -317,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E926AD0A1AEE36B600BBC1D1 /* FriendsViewController.swift in Sources */,
-				E92D69AB1AEEB61800350169 /* NavigationController.swift in Sources */,
 				E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */,
 				E926AD081AEE353900BBC1D1 /* MapViewController.swift in Sources */,
 				E9BA78511AF137BB004482EF /* StalkerAnnotation.swift in Sources */,

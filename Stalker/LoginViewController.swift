@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 
+let kPassword = "stalker"
+
 class LoginViewController: UIViewController {
     
     let usernameField = UITextField()
@@ -65,7 +67,7 @@ class LoginViewController: UIViewController {
     
     func login() {
         let username = usernameField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let password = "stalker"
+        let password = kPassword
         
         PFUser.logInWithUsernameInBackground(username, password: password) {
             (success, error) -> Void in
@@ -81,7 +83,7 @@ class LoginViewController: UIViewController {
     
     func signup() {
         let username = usernameField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let password = "stalker"
+        let password = kPassword
         
         let newUser = PFUser.new()
         newUser.username = username

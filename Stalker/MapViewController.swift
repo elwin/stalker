@@ -10,6 +10,12 @@ import UIKit
 import MapKit
 import Parse
 
+let kLocationClass = "location"
+let kUserClass = "_User"
+let kObjectID = "objectID"
+let kLocation = "location"
+let kUser = "user"
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var locationManager = CLLocationManager()
@@ -26,8 +32,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         view.addSubview(map)
         
         map.setTranslatesAutoresizingMaskIntoConstraints(false)
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[map]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["map": map]))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[map]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["map": map]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:|[map]|",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["map": map]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:|[map]|",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["map": map]))
         
         requestAuthorization()
     }
@@ -70,43 +84,43 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func updateLocation(location: PFGeoPoint) {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let savedObjectID = userDefaults.valueForKey("objectID") as? String
+        let savedObjectID = userDefaults.valueForKey(kObjectID) as? String
         
         if let objectID = savedObjectID {
-            let query = PFQuery(className: "locations")
+            let query = PFQuery(className: kLocationClass)
             
             query.getObjectInBackgroundWithId(objectID) {
                 (data: PFObject?, error: NSError?) -> Void in
                 if error != nil {
                     println(error)
                 } else if let data = data {
-                    data["user"] = PFUser.currentUser()?.username
-                    data["location"] = location
+                    data[kUser] = PFUser.currentUser()?.username
+                    data[kLocation] = location
                     data.saveInBackground()
                 }
             }
         } else {
-            let data = PFObject(className: "locations")
-            data["user"] = PFUser.currentUser()?.username
-            data["location"] = location
+            let data = PFObject(className: kLocationClass)
+            data[kUser] = PFUser.currentUser()?.username
+            data[kLocation] = location
             data.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-                userDefaults.setValue(data.objectId!, forKey: "objectID")
+                userDefaults.setValue(data.objectId!, forKey: kObjectID)
             })
         }
     }
     
     func retrieveStalkerLocation() {
-        let query = PFQuery(className: "locations")
+        let query = PFQuery(className: kLocationClass)
         let username = PFUser.currentUser()?.username
         if let user = username {
-            query.whereKey("user", notEqualTo: user)
+            query.whereKey(kUser, notEqualTo: user)
             query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
                 if error == nil {
                     if let objects = objects as? [PFObject] {
                         self.map.removeAnnotations(self.map.annotations)
                         for object in objects {
-                            let location = object["location"] as! PFGeoPoint
-                            let username = object["user"] as! String
+                            let location = object[kLocation] as! PFGeoPoint
+                            let username = object[kUser] as! String
                             let time = object.createdAt!
                             self.setStalkerLocation(location, username: username, timeStamp: time)
                         }
