@@ -44,8 +44,11 @@ class FriendsViewController: UITableViewController, UITableViewDelegate {
             
             if error == nil {
                 
-                let object = objects?[0] as! PFObject
-                object.deleteInBackground()
+                if objects?.count > 0 {
+                    let object = objects?[0] as! PFObject
+                    object.deleteInBackground()
+                }
+                
                 PFUser.logOutInBackground()
                 
                 self.tabBarController?.selectedIndex = 0
