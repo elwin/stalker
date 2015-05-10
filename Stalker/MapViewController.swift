@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import Parse
 
-let kLocationClass = "location"
+let kLocationClass = "locations"
 let kUserClass = "_User"
 let kObjectID = "objectID"
 let kLocation = "location"
@@ -83,29 +83,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func updateLocation(location: PFGeoPoint) {
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let savedObjectID = userDefaults.valueForKey(kObjectID) as? String
-        
-        if let objectID = savedObjectID {
-            let query = PFQuery(className: kLocationClass)
-            
-            query.getObjectInBackgroundWithId(objectID) {
-                (data: PFObject?, error: NSError?) -> Void in
-                if error != nil {
-                    println(error)
-                } else if let data = data {
-                    data[kUser] = PFUser.currentUser()?.username
-                    data[kLocation] = location
-                    data.saveInBackground()
-                }
+        let query = PFQuery(className: kLocationClass)
+        query.whereKey(kUser, equalTo: PFUser.currentUser()!.username!)
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil && objects?.count > 0 {
+                let object = objects?[0] as! PFObject
+                object[kLocation] = location
+                object.saveInBackground()
+            } else {
+                let object = PFObject(className: kLocationClass)
+                object[kUser] = PFUser.currentUser()?.username
+                object[kLocation] = location
+                object.saveInBackground()
+                
             }
-        } else {
-            let data = PFObject(className: kLocationClass)
-            data[kUser] = PFUser.currentUser()?.username
-            data[kLocation] = location
-            data.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-                userDefaults.setValue(data.objectId!, forKey: kObjectID)
-            })
         }
     }
     
@@ -115,7 +106,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if let user = username {
             query.whereKey(kUser, notEqualTo: user)
             query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
-                if error == nil {
+                if error == nil && objects != nil {
                     if let objects = objects as? [PFObject] {
                         self.map.removeAnnotations(self.map.annotations)
                         for object in objects {

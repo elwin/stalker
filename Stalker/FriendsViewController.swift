@@ -37,17 +37,28 @@ class FriendsViewController: UITableViewController, UITableViewDelegate {
     }
     
     func logout() {
-        let object = PFObject(className: kLocationClass)
-        object.objectId = NSUserDefaults.standardUserDefaults().objectForKey(kObjectID) as? String
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(kObjectID)
-        object.deleteInBackground()
-        PFUser.logOutInBackground()
         
-        self.tabBarController?.selectedIndex = 0
-        let tabBarController = TabBarController()
+        let query = PFQuery(className: kLocationClass)
+        query.whereKey(kUser, equalTo: PFUser.currentUser()!.username!)
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                
+                let object = objects?[0] as! PFObject
+                object.deleteInBackground()
+                PFUser.logOutInBackground()
+                
+                self.tabBarController?.selectedIndex = 0
+                let tabBarController = TabBarController()
+                
+                let loginViewController = LoginViewController()
+                self.presentViewController(loginViewController, animated: true, completion: nil)
+            } else {
+                println(error?.description)
+            }
+            
+        }
         
-        let loginViewController = LoginViewController()
-        self.presentViewController(loginViewController, animated: true, completion: nil)
     }
     
     //MARK: TableView Data Source
