@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
     func allignObjectsInView() {
         
         titleLabel.center.x = visibleView.width / 2
-        titleLabel.center.y = visibleView.height * 0.3
+        titleLabel.center.y = visibleView.height * 0.35
         
         usernameField.center.x = visibleView.width / 2
         usernameField.center.y = visibleView.height * 0.65
