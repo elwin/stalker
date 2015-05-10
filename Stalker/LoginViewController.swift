@@ -14,8 +14,18 @@ let kPassword = "stalker"
 class LoginViewController: UIViewController {
     
     let usernameField = UITextField()
+    let titleLabel = UILabel()
+    let loginButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    var visibleView: CGRect = CGRectMake(0, 0, 0, 0)
     
     override func viewDidLoad() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardWasShown:",
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        visibleView = view.frame
         
         view.backgroundColor = UIColor.clearColor()
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
@@ -24,23 +34,17 @@ class LoginViewController: UIViewController {
         blurView.frame = view.frame
         view.addSubview(blurView)
         
-        let titleLabel = UILabel()
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 30)
         titleLabel.text = "Welcome to \n Stalker"
         titleLabel.sizeToFit()
-        titleLabel.center.x = view.center.x
-        titleLabel.center.y = view.frame.height * 0.15
         view.addSubview(titleLabel)
         
         usernameField.placeholder = "Some fancy Username"
         usernameField.font = UIFont(name: "HelveticaNeue-Light", size: 18)
         usernameField.sizeToFit()
-        usernameField.frame.size.width = view.frame.size.width - 50
-        usernameField.frame.size.height += 20
-        usernameField.center.x = view.center.x
-        usernameField.center.y = view.frame.height * 0.3
+        usernameField.frame.size.width = visibleView.width - 60
         
         var border = CALayer()
         var width = CGFloat(0.5)
@@ -53,15 +57,34 @@ class LoginViewController: UIViewController {
         view.addSubview(usernameField)
         usernameField.becomeFirstResponder()
         
-        let loginButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         loginButton.titleLabel?.textAlignment = NSTextAlignment.Center
         loginButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 18)
         loginButton.setTitle("Continue", forState: UIControlState.Normal)
         loginButton.sizeToFit()
-        loginButton.center.x = view.center.x
-        loginButton.center.y = view.frame.height * 0.4
         loginButton.addTarget(nil, action: "login", forControlEvents: .TouchUpInside)
         view.addSubview(loginButton)
+        
+        allignObjectsInView()
+    }
+    
+    func allignObjectsInView() {
+        
+        titleLabel.center.x = visibleView.width / 2
+        titleLabel.center.y = visibleView.height * 0.3
+        
+        usernameField.center.x = visibleView.width / 2
+        usernameField.center.y = visibleView.height * 0.65
+        
+        loginButton.center.x = visibleView.width / 2
+        loginButton.center.y = visibleView.height * 0.85
+        
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        let userInfo = notification.userInfo!
+        let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        visibleView.size.height = view.frame.size.height - keyboardFrame.size.height
+        allignObjectsInView()
     }
     
     
