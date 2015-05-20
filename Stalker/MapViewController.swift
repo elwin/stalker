@@ -25,7 +25,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         
         self.title = "Stalker"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refresh")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonSystemItem.Refresh,
+            target: self,
+            action: "refresh")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Logout",
+            style: UIBarButtonItemStyle.Plain,
+            target: self,
+            action: "logout")
         
         map = MKMapView()
         map.delegate = self
@@ -46,6 +54,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         requestAuthorization()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+        let currentUser = PFUser.currentUser()
+        if (currentUser != nil) {
+            println("Current User: \(currentUser!.username!)")
+        } else {
+            let loginViewController = LoginViewController()
+            self.presentViewController(loginViewController, animated: true, completion: nil)
+        }
+    }
+    
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             map.showsUserLocation = true
@@ -63,7 +82,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, locationDistance, locationDistance)
         map.setRegion(region, animated: true)
         userLocationSet = true
-        retrieveStalkerLocation()
+        refresh()
         
     }
     
@@ -127,5 +146,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let annotation = StalkerAnnotation(stalker: username, coordinate: location) as MKAnnotation
         map.addAnnotation(annotation)
+    }
+    
+    func logout() {
+        
+        let query = PFQuery(className: kLocationClass)
+        query.whereKey(kUser, equalTo: PFUser.currentUser()!.username!)
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                
+                if objects?.count > 0 {
+                    let object = objects?[0] as! PFObject
+                    object.deleteInBackground()
+                }
+                
+                PFUser.logOutInBackground()
+                
+                let loginViewController = LoginViewController()
+                self.presentViewController(loginViewController, animated: true, completion: nil)
+            } else {
+                println(error?.description)
+            }
+            
+        }
+        
     }
 }
