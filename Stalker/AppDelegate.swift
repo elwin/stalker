@@ -23,18 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId(applicationID, clientKey: clientKey)
         
-        let tabBarController = TabBarController()
         let mapViewController = MapViewController()
         let mapNavigationController = UINavigationController(rootViewController: mapViewController)
-        let friendsViewController = FriendsViewController()
-        let friendsNavigationController = UINavigationController(rootViewController: friendsViewController)
-        
-        mapViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Search, tag: 0)
-        friendsViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 1)
-        tabBarController.viewControllers = [mapNavigationController, friendsNavigationController]
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = tabBarController
+        window!.rootViewController = mapNavigationController
         window!.makeKeyAndVisible()
         window!.backgroundColor = UIColor.whiteColor()
         
