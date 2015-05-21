@@ -11,9 +11,7 @@
 		E90361981AEFB0980092037F /* Zurich, Switzerland.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E90361971AEFB0980092037F /* Zurich, Switzerland.gpx */; };
 		E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */; };
 		E926ACFC1AEE334F00BBC1D1 /* StalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926ACFB1AEE334F00BBC1D1 /* StalkerTests.swift */; };
-		E926AD061AEE34E000BBC1D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD051AEE34E000BBC1D1 /* TabBarController.swift */; };
 		E926AD081AEE353900BBC1D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD071AEE353900BBC1D1 /* MapViewController.swift */; };
-		E926AD0A1AEE36B600BBC1D1 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */; };
 		E926AD211AEE448700BBC1D1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E926AD191AEE43DA00BBC1D1 /* AudioToolbox.framework */; };
 		E926AD221AEE448700BBC1D1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E926AD1B1AEE43E100BBC1D1 /* CFNetwork.framework */; };
 		E926AD231AEE448700BBC1D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E926AD1F1AEE443500BBC1D1 /* libsqlite3.dylib */; };
@@ -34,6 +32,7 @@
 		E930F3F91AEE5A46008EABD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */; };
 		E995C0F61AF1152E0076785E /* Launcscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E995C0F51AF1152E0076785E /* Launcscreen.storyboard */; };
 		E9BA78511AF137BB004482EF /* StalkerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA78501AF137BB004482EF /* StalkerAnnotation.swift */; };
+		E9DC7ED61B0BD5160042FF4B /* Zurich Ost.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E9DC7ED51B0BD5160042FF4B /* Zurich Ost.gpx */; };
 		E9E5102E1AFD016900692AA8 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E5102D1AFD016900692AA8 /* images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -56,9 +55,7 @@
 		E926ACF51AEE334F00BBC1D1 /* StalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E926ACFA1AEE334F00BBC1D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E926ACFB1AEE334F00BBC1D1 /* StalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StalkerTests.swift; sourceTree = "<group>"; };
-		E926AD051AEE34E000BBC1D1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E926AD071AEE353900BBC1D1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		E926AD0B1AEE427A00BBC1D1 /* ScratchPad.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = ScratchPad.playground; path = Stalker/ScratchPad.playground; sourceTree = "<group>"; };
 		E926AD191AEE43DA00BBC1D1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E926AD1B1AEE43E100BBC1D1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -80,6 +77,7 @@
 		E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E995C0F51AF1152E0076785E /* Launcscreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launcscreen.storyboard; sourceTree = "<group>"; };
 		E9BA78501AF137BB004482EF /* StalkerAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StalkerAnnotation.swift; sourceTree = "<group>"; };
+		E9DC7ED51B0BD5160042FF4B /* Zurich Ost.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Zurich Ost.gpx"; sourceTree = "<group>"; };
 		E9E5102D1AFD016900692AA8 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +120,7 @@
 		E926ACD71AEE334F00BBC1D1 = {
 			isa = PBXGroup;
 			children = (
+				E9DC7ED51B0BD5160042FF4B /* Zurich Ost.gpx */,
 				E90361971AEFB0980092037F /* Zurich, Switzerland.gpx */,
 				E926AD0B1AEE427A00BBC1D1 /* ScratchPad.playground */,
 				E926ACE21AEE334F00BBC1D1 /* Stalker */,
@@ -145,10 +144,8 @@
 			children = (
 				E926ACE51AEE334F00BBC1D1 /* AppDelegate.swift */,
 				E930F3F81AEE5A46008EABD6 /* LoginViewController.swift */,
-				E926AD051AEE34E000BBC1D1 /* TabBarController.swift */,
 				E926AD071AEE353900BBC1D1 /* MapViewController.swift */,
 				E9BA78501AF137BB004482EF /* StalkerAnnotation.swift */,
-				E926AD091AEE36B600BBC1D1 /* FriendsViewController.swift */,
 				E9E5102D1AFD016900692AA8 /* images.xcassets */,
 				E995C0F51AF1152E0076785E /* Launcscreen.storyboard */,
 				E926ACE31AEE334F00BBC1D1 /* Supporting Files */,
@@ -295,6 +292,7 @@
 			files = (
 				E9E5102E1AFD016900692AA8 /* images.xcassets in Resources */,
 				E90361981AEFB0980092037F /* Zurich, Switzerland.gpx in Resources */,
+				E9DC7ED61B0BD5160042FF4B /* Zurich Ost.gpx in Resources */,
 				E995C0F61AF1152E0076785E /* Launcscreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,12 +311,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E926AD0A1AEE36B600BBC1D1 /* FriendsViewController.swift in Sources */,
 				E926ACE61AEE334F00BBC1D1 /* AppDelegate.swift in Sources */,
 				E926AD081AEE353900BBC1D1 /* MapViewController.swift in Sources */,
 				E9BA78511AF137BB004482EF /* StalkerAnnotation.swift in Sources */,
 				E930F3F91AEE5A46008EABD6 /* LoginViewController.swift in Sources */,
-				E926AD061AEE34E000BBC1D1 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +354,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -402,6 +399,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

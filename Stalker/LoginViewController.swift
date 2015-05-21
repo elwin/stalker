@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
         usernameField.font = UIFont(name: "HelveticaNeue-Light", size: 18)
         usernameField.sizeToFit()
         usernameField.frame.size.width = visibleView.width - 60
+        usernameField.frame.size.height += 10
         
         var border = CALayer()
         var width = CGFloat(0.5)
