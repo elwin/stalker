@@ -39,6 +39,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         map.delegate = self
         view.addSubview(map)
         
+        // Add constrains to stretch & pin the Map to its Superview
         map.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|[map]|",
@@ -60,6 +61,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if (currentUser != nil) {
             println("Current User: \(currentUser!.username!)")
         } else {
+            // Present LoginViewController
             let loginViewController = LoginViewController()
             self.presentViewController(loginViewController, animated: true, completion: nil)
         }
@@ -74,6 +76,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
+        // Only update the UserLocation if it didn't happen already
         if userLocationSet {
             return
         }
@@ -83,7 +86,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         map.setRegion(region, animated: true)
         userLocationSet = true
         refresh()
-        
     }
     
     func requestAuthorization() {
@@ -106,10 +108,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         query.whereKey(kUser, equalTo: PFUser.currentUser()!.username!)
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil && objects?.count > 0 {
+                
+                // Location is already stored in Parse
+                // Just update the same Object and store it back
                 let object = objects?[0] as! PFObject
                 object[kLocation] = location
                 object.saveInBackground()
+                
             } else {
+                
+                // No Location found
+                // Create new Object and store it
                 let object = PFObject(className: kLocationClass)
                 object[kUser] = PFUser.currentUser()?.username
                 object[kLocation] = location
@@ -120,10 +129,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func retrieveStalkerLocation() {
+        
         let query = PFQuery(className: kLocationClass)
         let username = PFUser.currentUser()?.username
+        
         if let user = username {
+            
+            // Find all Userlocations in Backend; Exclude CurrentUser
             query.whereKey(kUser, notEqualTo: user)
+            
             query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
                 if error == nil && objects != nil {
                     if let objects = objects as? [PFObject] {
@@ -142,14 +156,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func setStalkerLocation(geoPoint: PFGeoPoint, username: String, timeStamp: NSDate) {
-        let location = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
         
+        let location = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
         let annotation = StalkerAnnotation(stalker: username, coordinate: location) as MKAnnotation
         map.addAnnotation(annotation)
+        
     }
     
     func logout() {
         
+        // Remove Location from Backend
         let query = PFQuery(className: kLocationClass)
         query.whereKey(kUser, equalTo: PFUser.currentUser()!.username!)
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -163,6 +179,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 PFUser.logOutInBackground()
                 
+                // Present LoginViewController
                 let loginViewController = LoginViewController()
                 self.presentViewController(loginViewController, animated: true, completion: nil)
             } else {
